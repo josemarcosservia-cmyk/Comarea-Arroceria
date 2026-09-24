@@ -1,0 +1,318 @@
+[
+  {
+    "id": "compartir",
+    "title": "Para compartir… o no",
+    "items": [
+      {
+        "n": "Jamón ibérico",
+        "p": "24€",
+        "a": []
+      },
+      {
+        "n": "Pastel de centollo, tostas y salsa rosa",
+        "p": "18€",
+        "a": [
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "n": "Salpicón de rape y langostinos",
+        "p": "25€",
+        "a": [
+          2,
+          4,
+          12
+        ]
+      },
+      {
+        "n": "Vieiras del Pacífico a la plancha",
+        "p": "19€",
+        "a": [
+          13
+        ]
+      },
+      {
+        "n": "Croquetas de jamón y/o chipirón en tinta",
+        "p": "14€",
+        "a": [
+          1,
+          2,
+          7
+        ]
+      },
+      {
+        "n": "Tosta de chicharrones con queso del país",
+        "p": "10€",
+        "a": [
+          1,
+          7
+        ]
+      },
+      {
+        "n": "Langostinos crujientes",
+        "s": "Acompañados de Ali Oli",
+        "p": "17€",
+        "a": [
+          1,
+          2,
+          3,
+          12
+        ]
+      },
+      {
+        "n": "Chipirones a la andaluza",
+        "p": "18€",
+        "a": [
+          1,
+          2
+        ]
+      },
+      {
+        "n": "Pulpo a Feira",
+        "p": "21€",
+        "a": [
+          2
+        ]
+      },
+      {
+        "n": "Cazuela de langostinos y zamburiñas",
+        "p": "17€",
+        "a": [
+          2,
+          12,
+          13
+        ]
+      },
+      {
+        "n": "Pimientos de Padrón",
+        "s": "Solo temporada",
+        "p": "9€",
+        "a": []
+      },
+      {
+        "n": "Huevos fritos con jamón ibérico",
+        "p": "18€",
+        "a": [
+          3
+        ]
+      },
+      {
+        "n": "Mejillones rellenos",
+        "p": "14€",
+        "a": [
+          1,
+          2,
+          3,
+          4,
+          13
+        ]
+      }
+    ]
+  },
+  {
+    "id": "mar",
+    "title": "del Mar",
+    "items": [
+      {
+        "n": "Bacalao",
+        "s": "A la gallega · Portuguesa",
+        "p": "24€",
+        "a": [
+          1,
+          4
+        ]
+      },
+      {
+        "n": "Cazuela de rape en salsa marinera",
+        "p": "26€",
+        "a": [
+          4
+        ]
+      },
+      {
+        "n": "Sapitos de rape con patata chip",
+        "p": "26€",
+        "a": [
+          1,
+          3,
+          4
+        ]
+      },
+      {
+        "n": "Pescado del día",
+        "p": "consultar",
+        "a": []
+      }
+    ]
+  },
+  {
+    "id": "huerta",
+    "title": "de la Huerta",
+    "items": [
+      {
+        "n": "Ensalada mixta",
+        "p": "9€",
+        "a": []
+      },
+      {
+        "n": "Ensalada Lagar",
+        "s": "Variedad de lechugas, tomate cherry, queso San Simón, salmón ahumado, nueces y vinagreta de mostaza",
+        "p": "14€",
+        "a": [
+          4,
+          7,
+          10
+        ]
+      },
+      {
+        "n": "Ensalada de tomate ibérico y ventresca de bonito",
+        "p": "14€",
+        "a": [
+          4
+        ]
+      },
+      {
+        "n": "Ensalada templada",
+        "s": "Variedad de lechugas, tomate cherry, con chipirones y zamburiñas",
+        "p": "14€",
+        "a": [
+          2,
+          13
+        ]
+      }
+    ]
+  },
+  {
+    "id": "carnivoros",
+    "title": "Carnívoros",
+    "items": [
+      {
+        "n": "Escalopines de solomillo de ternera",
+        "p": "22€",
+        "a": []
+      },
+      {
+        "n": "Secreto de cerdo ibérico",
+        "p": "20€",
+        "a": []
+      },
+      {
+        "n": "Croca de ternera con verduritas",
+        "p": "20€",
+        "a": []
+      },
+      {
+        "n": "Solomillo de cerdo ibérico con San Simón",
+        "p": "19€",
+        "a": [
+          7
+        ]
+      },
+      {
+        "n": "Raxo con pimientos",
+        "p": "16€",
+        "a": [],
+        "s": "Raxo con pimientos\n\nTiernos dados de lomo de cerdo salteados al momento con pimientos rojos y cebolla, acompañados de patatas fritas caseras. Un clásico gallego, jugoso, sabroso y perfecto para compartir."
+      },
+      {
+        "n": "Entrecot",
+        "p": "22€",
+        "a": []
+      }
+    ]
+  },
+  {
+    "id": "dulce",
+    "title": "final Dulce",
+    "items": [
+      {
+        "n": "Tiramisú",
+        "p": "6,0€",
+        "a": [
+          1,
+          3,
+          7,
+          12,
+          14
+        ],
+        "s": "Tiramisú\n\nEl clásico postre italiano elaborado con capas de bizcocho de soletilla empapado en café espresso, una suave crema de mascarpone y un delicado toque de cacao puro. Cremoso, ligero y lleno de sabor: el broche perfecto para tu comida."
+      },
+      {
+        "n": "Tarta de queso al horno",
+        "p": "6,0€",
+        "a": [
+          1,
+          3,
+          7
+        ]
+      },
+      {
+        "n": "Taquitos de queso del país y membrillo",
+        "p": "6,0€",
+        "a": [
+          1,
+          7
+        ]
+      },
+      {
+        "n": "Coulant con helado de vainilla",
+        "p": "6,0€",
+        "a": [
+          1,
+          3,
+          7,
+          8,
+          14
+        ]
+      },
+      {
+        "n": "Dúo de bolas de helado al gusto",
+        "s": "Consultar sabores",
+        "p": "6,0€",
+        "a": [
+          7
+        ]
+      },
+      {
+        "n": "Castañas en almíbar con helado vainilla",
+        "p": "6,5€",
+        "a": [
+          1,
+          7,
+          8
+        ]
+      }
+    ]
+  },
+  {
+    "id": "otros",
+    "title": "Y además",
+    "items": [
+      {
+        "n": "Pan, ración por persona",
+        "p": "1€",
+        "a": [
+          1
+        ]
+      }
+    ]
+  },
+  {
+    "id": "sec-ms64yy5t",
+    "title": "Sugerencias",
+    "items": [
+      {
+        "n": "Ensalada de Piña con langostinos ",
+        "s": "Lechuga, piña, jamon cocido, nueces, salsa rosa, cherrys, langostinos",
+        "p": "15",
+        "a": [
+          2,
+          3,
+          8
+        ]
+      }
+    ]
+  }
+]
