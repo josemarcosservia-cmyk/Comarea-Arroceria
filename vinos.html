@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carta de vinos · Comarea Arrocería</title>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Dancing+Script:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --antracita:#1c1e1f;
+    --antracita-2:#141516;
+    --crema:#f5f5f5;
+    --crema-alt:#ebebeb;
+    --musgo:#2a2a2a;
+    --linea:#333333;
+    --rojo:#cc1a1a;
+    --rojo-claro:#ff6b6b;
+    --rojo-oscuro:#991010;
+    --texto:#ffffff;
+    --gris:#aaaaaa;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+  body{
+    min-height:100vh;
+    background-color:#1c1e1f;
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeBlend in='SourceGraphic' mode='multiply'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.22'/%3E%3C/svg%3E"),
+      repeating-linear-gradient(
+        177deg,
+        transparent 0px,
+        transparent 3px,
+        rgba(255,255,255,.015) 3px,
+        rgba(255,255,255,.015) 4px
+      ),
+      repeating-linear-gradient(
+        92deg,
+        transparent 0px,
+        transparent 80px,
+        rgba(255,255,255,.008) 80px,
+        rgba(255,255,255,.008) 81px
+      );
+    color:#f5f5f5;
+    font-family:'Raleway',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .home-btn{
+    position:absolute; top:16px; left:16px; z-index:5;
+    display:inline-flex; align-items:center; gap:6px;
+    font-size:12px; font-weight:600; letter-spacing:.04em; text-transform:uppercase;
+    color:#f5f5f5; text-decoration:none;
+    background:rgba(255,255,255,.10); border:1px solid rgba(233,223,192,.28); border-radius:999px; padding:7px 13px;
+    transition:background .2s, transform .12s ease;
+  }
+  .home-btn:hover{ background:rgba(255,255,255,.18); }
+  .home-btn:active{ transform:scale(.96); }
+  .hero{
+    position:relative; text-align:center; color:#f5f5f5;
+    background:radial-gradient(120% 140% at 50% -10%, #111213 0%, var(--antracita) 45%, var(--antracita-2) 100%);
+    padding:52px 24px 40px;
+  }
+  .hero .eyebrow{ font-size:11px; letter-spacing:.26em; text-transform:uppercase; color:var(--rojo-claro); font-weight:600; }
+  .hero h1{ font-family:'Raleway',sans-serif; font-weight:600; font-size:34px; letter-spacing:.12em; text-transform:uppercase; margin:10px 0 6px; }
+  .hero .sub{ font-family:'Dancing Script',cursive; font-style:italic; font-size:14px; color:#ffaaaa; }
+
+  main{ max-width:640px; margin:0 auto; padding:28px 18px 48px; }
+  .type-title{
+    font-family:'Raleway',sans-serif; font-style:italic; font-weight:600;
+    font-size:30px; color:#ffffff; margin:36px 0 2px; letter-spacing:-.01em;
+  }
+  .type-title:first-child{ margin-top:4px; }
+  .type-rule{ height:2px; background:linear-gradient(to right, var(--rojo), transparent); margin-bottom:16px; }
+  .do-title{
+    font-family:'Dancing Script',cursive; font-style:italic; font-weight:600;
+    font-size:18px; color:var(--rojo); margin:20px 0 2px;
+  }
+  .do-rule{ height:1px; background:var(--linea); margin-bottom:4px; }
+  .wine{
+    display:flex; align-items:center; gap:12px;
+    padding:13px 6px; border-bottom:1px dashed var(--linea);
+    cursor:pointer; text-align:left; width:100%;
+    background:none; border-left:none; border-right:none; border-top:none;
+    transition:background .15s;
+  }
+  .wine:last-child{ border-bottom:none; }
+  .wine:hover{ background:rgba(201,154,58,.06); }
+  .wine .info{ flex:1; }
+  .wine .nom{ font-family:'Raleway',sans-serif; font-weight:600; font-size:17px; color:#ffffff; }
+  .wine .meta-row{ font-size:12.5px; color:var(--gris); margin-top:2px; }
+  .wine .precio{ font-family:'Raleway',sans-serif; font-weight:600; font-size:16px; color:var(--rojo); white-space:nowrap; }
+  .wine .chev{ color:var(--rojo); font-size:18px; margin-left:2px; }
+  .agotado-tag{
+    display:inline-block; margin-left:8px; vertical-align:2px;
+    font-size:9.5px; font-weight:700; letter-spacing:.12em; text-transform:uppercase;
+    color:#fff; background:#555; border-radius:999px; padding:2px 8px;
+  }
+  .wine.agotado .nom, .wine.agotado .meta-row{ opacity:.55; }
+  .wine.agotado .precio{ color:#777; text-decoration:line-through; }
+
+  /* MODAL */
+  .modal{ position:fixed; inset:0; z-index:50; display:flex; align-items:center; justify-content:center; padding:16px; }
+  .modal[hidden]{ display:none; }
+  .modal-bg{ position:absolute; inset:0; background:rgba(10,10,12,.72); -webkit-backdrop-filter:blur(3px); backdrop-filter:blur(3px); animation:fade .25s ease; }
+  .card{
+    position:relative; z-index:1; width:100%; max-width:920px; max-height:92vh; overflow-y:auto;
+    background:#1c1e1f; border-radius:16px; box-shadow:0 24px 70px rgba(0,0,0,.6);
+    animation:pop .3s cubic-bezier(.22,.61,.36,1);
+  }
+  .close{
+    position:absolute; top:12px; right:12px; z-index:3; width:34px; height:34px; border-radius:50%;
+    border:1px solid var(--linea); background:#fff; color:var(--gris); font-size:19px; line-height:1; cursor:pointer;
+  }
+  .close:active{ transform:scale(.92); }
+  .detail{ display:grid; grid-template-columns:200px 1.05fr 1.15fr; min-height:380px; }
+  .col-bottle{
+    background:#1c1e1f;
+    border-radius:16px 0 0 16px;
+    display:flex; align-items:center; justify-content:center; padding:24px 14px;
+  }
+  .col-bottle img{
+    max-height:300px; max-width:150px; width:auto; height:auto;
+    object-fit:contain; filter:drop-shadow(0 12px 18px rgba(0,0,0,.4));
+  }
+  .col-bottle .bottle-svg{ max-width:110px; filter:drop-shadow(0 12px 18px rgba(0,0,0,.4)); }
+  .col-star{
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    padding:24px 14px; border-right:1px solid #333333;
+  }
+  .radar-label{ font-size:11px; text-transform:uppercase; letter-spacing:.22em; color:var(--gris); margin-bottom:6px; }
+  .col-info{ padding:28px 24px 24px; display:flex; flex-direction:column; }
+  .col-info h3{ font-family:'Raleway',sans-serif; font-weight:600; font-size:25px; color:#ffffff; line-height:1.08; }
+  .col-info .bodega{ font-size:12px; color:var(--gris); margin-top:2px; font-weight:600; text-transform:uppercase; letter-spacing:.08em; }
+  .col-info .do2{ font-size:13px; color:var(--gris); margin-top:2px; }
+  .col-info .uva-tag{ display:inline-block; align-self:flex-start; margin-top:10px; font-size:11px; text-transform:uppercase; letter-spacing:.1em; color:var(--rojo); font-weight:600; border:1px solid var(--rojo); border-radius:999px; padding:4px 11px; }
+  .info-meta{ display:flex; gap:8px; margin-top:16px; }
+  .info-meta div{ flex:1; background:#1c1e1f; border:1px solid #333; border-radius:8px; padding:9px; text-align:center; }
+  .info-meta .lbl{ font-size:9px; text-transform:uppercase; letter-spacing:.08em; color:var(--rojo); font-weight:600; }
+  .info-meta .val{ font-family:'Raleway',sans-serif; font-size:14px; color:#ffffff; margin-top:3px; }
+  .desc{ font-size:14px; line-height:1.65; color:#ffffff; margin-top:16px; }
+  .maridaje{ font-size:13px; color:var(--gris); margin-top:10px; }
+  .maridaje b{ color:#ffffff; }
+
+  .aviso-carga{ text-align:center; color:var(--gris); font-size:15px; line-height:1.7; padding:50px 10px; }
+  footer{ text-align:center; padding:22px 18px 40px; font-size:12.5px; color:var(--gris); line-height:1.7; }
+  footer .tel{ font-family:'Raleway',sans-serif; font-weight:600; font-size:15px; color:#ffffff; }
+
+  .radar-data{ transform-box:fill-box; transform-origin:center; animation:starPop .85s cubic-bezier(.34,1.35,.5,1) both; }
+  .radar-grid{ animation:fade .5s ease both; }
+  @keyframes fade{ from{ opacity:0;} to{ opacity:1;} }
+  @keyframes pop{ from{ opacity:0; transform:translateY(14px) scale(.97);} to{ opacity:1; transform:none;} }
+  @keyframes starPop{ from{ opacity:0; transform:scale(.08) rotate(-25deg);} to{ opacity:1; transform:scale(1) rotate(0);} }
+
+  @media (max-width:660px){
+    .detail{ grid-template-columns:1fr; min-height:0; }
+    .col-bottle{ border-radius:16px 16px 0 0; padding:18px; }
+    .col-bottle img{ max-height:160px; max-width:80px; }
+    .col-star{ border-right:none; border-bottom:1px solid var(--linea); }
+    .col-info{ padding:22px 20px; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .modal-bg,.card,.radar-data,.radar-grid{ animation:none; }
+  }
+</style>
+</head>
+<body>
+  <div class="hero">
+    <a class="home-btn" href="index.html">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+      Inicio
+    </a>
+    <div class="eyebrow"><span style="font-family:'Raleway',sans-serif;font-weight:300;letter-spacing:.22em;text-transform:uppercase;color:#ffffff">COMAREA </span><span style="font-family:'Dancing Script',cursive;font-weight:600;color:#cc1a1a;letter-spacing:.02em">Arrocería</span></div>
+    <h1>Carta de vinos</h1>
+    <div class="sub">Toca un vino para ver su cata</div>
+  </div>
+
+  <main id="lista"><div class="aviso-carga">Cargando la carta\u2026</div></main>
+
+  <div class="modal" id="modal" hidden>
+    <div class="modal-bg" data-close></div>
+    <div class="card" id="card"></div>
+  </div>
+
+  <footer>
+    <span class="tel">881 898 534</span> · Enrique Mariñas Romero, 1 · A Coruña
+  </footer>
+
+<script>
+  /* =========================================================
+     Los vinos vienen de datos/vinos.json, que se edita desde
+     admin.html. Aquí no hay que tocar nada nunca más.
+     cata = [Cuerpo, Acidez, Fruta, Dulzor, Taninos, Final] (0-5)
+     ========================================================= */
+  const RUTA = 'datos/vinos.json';
+  let CARTA = [];
+
+  const LABELS = ['Cuerpo','Acidez','Fruta','Dulzor','Taninos','Final'];
+  function esc(s){ return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c])); }
+
+  function radar(vals){
+    const cx=130,cy=130,R=88,N=6,max=5;
+    const ang=i=>(-90+i*360/N)*Math.PI/180;
+    const pt=(i,r)=>[cx+r*Math.cos(ang(i)),cy+r*Math.sin(ang(i))];
+    let grid='';
+
+    // Anillos interiores (gris sutil, los 4 interiores)
+    for(let ring=1;ring<max;ring++){
+      const rr=R*ring/max; let p='';
+      for(let i=0;i<N;i++){const[x,y]=pt(i,rr);p+=(i?'L':'M')+x.toFixed(1)+' '+y.toFixed(1);}
+      grid+=`<path d="${p}Z" fill="none" stroke="#a8860c" stroke-width=".9" opacity=".45"/>`;
+    }
+
+    // Hexágono exterior — amarillo grueso
+    let outer='';
+    for(let i=0;i<N;i++){const[x,y]=pt(i,R);outer+=(i?'L':'M')+x.toFixed(1)+' '+y.toFixed(1);}
+    grid+=`<path d="${outer}Z" fill="none" stroke="#f5c518" stroke-width="2.8" stroke-linejoin="round"/>`;
+
+    // Líneas desde el centro a cada vértice — amarillo
+    for(let i=0;i<N;i++){
+      const[x,y]=pt(i,R);
+      grid+=`<line x1="${cx}" y1="${cy}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="#f5c518" stroke-width="1.6" opacity=".9"/>`;
+      // Etiquetas
+      const[lx,ly]=pt(i,R+20);
+      grid+=`<text x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" text-anchor="middle" dominant-baseline="middle" font-size="11" font-weight="600" font-family="Raleway,sans-serif" fill="#f5c518">${LABELS[i]}</text>`;
+    }
+
+    // Área de cata — rojo semitransparente
+    let dp='';
+    for(let i=0;i<N;i++){const[x,y]=pt(i,R*vals[i]/max);dp+=(i?'L':'M')+x.toFixed(1)+' '+y.toFixed(1);}
+    let data=`<path d="${dp}Z" fill="#cc1a1a" fill-opacity=".25" stroke="#cc1a1a" stroke-width="2" stroke-linejoin="round"/>`;
+    // Puntos en los vértices del área — amarillo
+    for(let i=0;i<N;i++){const[x,y]=pt(i,R*vals[i]/max);data+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="4" fill="#f5c518" stroke="#1c1e1f" stroke-width="1.2"/>`;}
+    return `<svg viewBox="0 0 260 260" width="100%" style="max-width:280px" role="img" aria-label="Estrella de cata">`
+          +`<g class="radar-grid">${grid}</g><g class="radar-data">${data}</g></svg>`;
+  }
+
+  const lista = document.getElementById('lista');
+
+  function pintar(){
+    lista.innerHTML = '';
+    CARTA.forEach(bloque=>{
+      const t=document.createElement('div'); t.className='type-title'; t.textContent=bloque.tipo; lista.appendChild(t);
+      const hr=document.createElement('div'); hr.className='type-rule'; lista.appendChild(hr);
+      (bloque.grupos||[]).forEach(g=>{
+        const dt=document.createElement('div'); dt.className='do-title'; dt.textContent=g.do; lista.appendChild(dt);
+        const dr=document.createElement('div'); dr.className='do-rule'; lista.appendChild(dr);
+        (g.vinos||[]).forEach(w=>{
+          const b=document.createElement('button'); b.className='wine'+(w.agotado?' agotado':'');
+          b.innerHTML=`<div class="info"><div class="nom">${esc(w.nom)}${w.agotado?'<span class="agotado-tag">Agotado</span>':''}</div><div class="meta-row">${esc(w.bodega)} \u00b7 ${esc(w.uva)}</div></div>`
+                     +`<div class="precio">${esc(w.bot)}</div><div class="chev">\u203a</div>`;
+          b.addEventListener('click',()=>abrir(w,bloque.tipo));
+          lista.appendChild(b);
+        });
+      });
+    });
+  }
+
+  async function cargar(){
+    try{
+      const res = await fetch(RUTA + '?v=' + Date.now(), { cache:'no-store' });
+      if(!res.ok) throw new Error(res.status);
+      CARTA = await res.json();
+      if(!Array.isArray(CARTA) || !CARTA.length) throw new Error('vacio');
+      pintar();
+    }catch(e){
+      lista.innerHTML = '<div class="aviso-carga">No se pudo cargar la carta de vinos.<br>'
+                      + 'Prueba a recargar la p\u00e1gina o pregunta en el local.</div>';
+    }
+  }
+  cargar();
+
+  const modal=document.getElementById('modal'), card=document.getElementById('card');
+  function abrir(w, tipo){
+    const imgHtml = w.img
+      ? `<img src="${esc(w.img)}" alt="Botella ${esc(w.nom)}" loading="lazy" onerror="this.style.display='none'">`
+      : '';
+    card.innerHTML=`
+      <button class="close" data-close aria-label="Cerrar">×</button>
+      <div class="detail">
+        <div class="col-bottle">${imgHtml}</div>
+        <div class="col-star">
+          <div class="radar-label">Estrella de cata</div>
+          ${radar(w.cata)}
+        </div>
+        <div class="col-info">
+          <div class="bodega">${esc(w.bodega)}</div>
+          <h3>${esc(w.nom)}</h3>
+          ${w.agotado?'<span class="agotado-tag" style="margin:6px 0 0">Agotado</span>':''}
+          <div class="do2">${esc(w.do)}</div>
+          <span class="uva-tag">${esc(w.uva)}</span>
+          <div class="info-meta">
+            <div><div class="lbl">Temperatura</div><div class="val">${esc(w.temp)}</div></div>
+            <div><div class="lbl">Copa</div><div class="val">${esc(w.copa)}</div></div>
+            <div><div class="lbl">Botella</div><div class="val">${esc(w.bot)}</div></div>
+          </div>
+          <div class="desc">${esc(w.desc)}</div>
+          <div class="maridaje"><b>Marida con:</b> ${esc(w.mar)}</div>
+        </div>
+      </div>`;
+    modal.hidden=false; document.body.style.overflow='hidden';
+  }
+  function cerrar(){ modal.hidden=true; document.body.style.overflow=''; }
+  modal.addEventListener('click',e=>{if(e.target.hasAttribute('data-close'))cerrar();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.hidden)cerrar();});
+</script>
+</body>
+</html>

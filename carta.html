@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comarea Arrocería — Carta</title>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Dancing+Script:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --antracita:#1c1e1f;
+    --antracita-2:#141516;
+    --panel:#232527;
+    --crema:#f5f5f5;
+    --crema-alt:#ebebeb;
+    --musgo:#2a2a2a;
+    --linea:#333333;
+    --rojo:#cc1a1a;
+    --rojo-claro:#ff6b6b;
+    --rojo-oscuro:#991010;
+    --texto:#ffffff;
+    --gris:#aaaaaa;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    min-height:100vh;
+    background-color:#1c1e1f;
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeBlend in='SourceGraphic' mode='multiply'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.18'/%3E%3C/svg%3E"),
+      repeating-linear-gradient(
+        177deg,
+        transparent 0px,
+        transparent 3px,
+        rgba(255,255,255,.012) 3px,
+        rgba(255,255,255,.012) 4px
+      ),
+      repeating-linear-gradient(
+        92deg,
+        transparent 0px,
+        transparent 80px,
+        rgba(255,255,255,.008) 80px,
+        rgba(255,255,255,.008) 81px
+      );
+    color:#f5f5f5;
+    font-family:'Raleway',sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--rojo); color:#fff;}
+
+  /* ---------- HERO ---------- */
+  .back{
+    position:absolute; top:16px; left:16px; z-index:5;
+    display:inline-flex; align-items:center; gap:5px;
+    font-family:'Raleway',sans-serif; font-size:12px; font-weight:600;
+    letter-spacing:.04em; text-transform:uppercase;
+    color:#f5f5f5; text-decoration:none;
+    background:rgba(255,255,255,.10); border:1px solid rgba(233,223,192,.28);
+    padding:6px 11px; border-radius:999px;
+    transition:background .2s, transform .12s ease;
+  }
+  .back:hover{ background:rgba(255,255,255,.18); }
+  .back:active{ transform:scale(.96); }
+  .hero{
+    position:relative;
+    background:radial-gradient(120% 140% at 50% -10%, #111213 0%, var(--antracita) 45%, var(--antracita-2) 100%);
+    color:#f5f5f5;
+    padding:64px 24px 40px;
+    text-align:center;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(244,238,221,0.05) 0, transparent 40%),
+      radial-gradient(circle at 85% 80%, rgba(244,238,221,0.05) 0, transparent 40%);
+    pointer-events:none;
+  }
+  .hero .eyebrow{
+    font-family:'Raleway',sans-serif;
+    font-size:11px;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    color:var(--rojo-claro);
+    margin-bottom:14px;
+  }
+  .hero h1{
+    font-family:'Raleway',sans-serif;
+    font-weight:600;
+    font-size:clamp(2.4rem, 9vw, 3.6rem);
+    letter-spacing:.01em;
+    line-height:1.02;
+  }
+  .hero .sub{
+    font-family:'Raleway',sans-serif;
+    font-size:12.5px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:#CFC9AE;
+    margin-top:12px;
+  }
+
+  /* firma: lagar SVG */
+  .press{ width:112px; height:112px; margin:26px auto 4px; position:relative; }
+  .press svg{ width:100%; height:100%; overflow:visible; }
+  .press .drip{ animation:drip 2.6s ease-in infinite; transform-origin:center; }
+  @keyframes drip{
+    0%{ transform:translateY(0); opacity:0; }
+    8%{ opacity:1; }
+    55%{ transform:translateY(20px); opacity:1; }
+    70%{ transform:translateY(24px); opacity:0; }
+    100%{ transform:translateY(24px); opacity:0; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .press .drip{ animation:none; opacity:1; }
+    .hero .eyebrow, .hero h1, .hero .sub{ animation:none; }
+    .section{ opacity:1 !important; transform:none !important; transition:none; }
+    .dish{ transform:none !important; transition:none; }
+    .chip, .pill, .legend-item{ transition:none; }
+    html{ scroll-behavior:auto; }
+  }
+
+  /* ---------- NAV ---------- */
+  .navwrap{
+    position:sticky; top:0; z-index:40;
+    background:rgba(20,21,22,.94);
+    -webkit-backdrop-filter:blur(8px);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--linea);
+  }
+  .navscroll{ display:flex; gap:8px; overflow-x:auto; padding:12px 16px; scrollbar-width:none; }
+  .navscroll::-webkit-scrollbar{display:none;}
+  .pill{
+    flex:0 0 auto;
+    font-family:'Raleway',sans-serif;
+    font-size:12.5px; font-weight:600; letter-spacing:.01em;
+    color:#f5f5f5;
+    background:transparent;
+    border:1px solid var(--linea);
+    border-radius:999px;
+    padding:7px 14px;
+    cursor:pointer; white-space:nowrap;
+    transition:background .2s, color .2s, border-color .2s, transform .12s ease;
+  }
+  .pill:active{ transform:scale(.95); }
+  .pill.active{ background:var(--rojo); border-color:var(--rojo); color:#fff; }
+
+  .searchbar{ padding:0 16px 12px; }
+  .searchbar input{
+    width:100%;
+    font-family:'Raleway',sans-serif;
+    font-size:16px;
+    padding:10px 14px;
+    border:1px solid var(--linea);
+    border-radius:10px;
+    background:var(--antracita);
+    color:#f5f5f5;
+    outline:none;
+  }
+  .searchbar input::placeholder{ color:#7d7d7d; }
+  .searchbar input:focus{ border-color:var(--rojo); }
+  .searchbar input:focus-visible{ outline:2px solid var(--rojo); outline-offset:1px; }
+
+  /* ---------- CONTENT ---------- */
+  main{ max-width:640px; margin:0 auto; padding:30px 18px 0; }
+
+  .section{
+    margin-bottom:44px;
+    opacity:0; transform:translateY(16px);
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  .section.in{ opacity:1; transform:translateY(0); }
+  .section h2{
+    font-family:'Raleway',sans-serif;
+    font-weight:600; font-style:italic;
+    color:#ffffff;
+    font-size:1.7rem;
+    text-align:center;
+  }
+  .section .rule{ width:90px; height:1px; background:var(--rojo); margin:10px auto 24px; position:relative; }
+  .section .rule::after{
+    content:""; position:absolute; left:50%; top:-2.5px; transform:translateX(-50%);
+    width:5px; height:5px; border-radius:50%; background:var(--rojo);
+  }
+
+  .dish{
+    padding:12px 0;
+    border-bottom:1px dashed var(--linea);
+    transform:translateY(10px);
+    transition:opacity .25s, filter .25s, transform .5s cubic-bezier(.22,.61,.36,1);
+  }
+  .dish:last-child{ border-bottom:none; }
+  .dish.hide{ display:none; }
+  .dish.dim{ opacity:.32; filter:grayscale(.4); }
+  .dish-top{ display:flex; justify-content:space-between; align-items:baseline; gap:10px; }
+  .dish-name{ font-family:'Raleway',sans-serif; font-size:15.5px; line-height:1.35; color:#ffffff; }
+  .dish-price{
+    font-family:'Raleway',sans-serif; font-weight:700; font-size:14.5px;
+    color:var(--rojo-claro); white-space:nowrap;
+  }
+  .dish-sub{
+    font-family:'Raleway',sans-serif; font-style:italic; font-size:12.8px;
+    color:var(--gris); margin-top:3px; max-width:88%;
+  }
+  .chips{ display:inline-flex; gap:4px; margin-left:6px; vertical-align:2px; }
+  .chip{
+    font-family:'Raleway',sans-serif; font-size:13px; font-weight:600;
+    color:#f5f5f5; background:var(--musgo);
+    border:1px solid var(--linea); border-radius:5px;
+    padding:1px 5px; cursor:pointer; line-height:1.5;
+    transition:background .2s, color .2s, transform .12s ease;
+  }
+  .chip:hover{ transform:translateY(-1px); }
+  .chip:active{ transform:translateY(0) scale(.92); }
+  .chip.active{ background:var(--rojo); border-color:var(--rojo); color:#fff; }
+
+  /* ---------- LEYENDA DE ALÉRGENOS ---------- */
+  .legend{
+    background:var(--panel);
+    border:1px solid var(--linea);
+    border-radius:14px;
+    padding:16px 18px;
+    margin:10px 0 40px;
+  }
+  .legend summary{
+    font-family:'Raleway',sans-serif; font-weight:600; font-size:13px;
+    letter-spacing:.05em; text-transform:uppercase;
+    color:#f5f5f5; cursor:pointer;
+  }
+  .legend-grid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:8px 10px; margin-top:14px; }
+  .legend-item{
+    display:flex; align-items:center; gap:7px;
+    font-family:'Raleway',sans-serif; font-size:12px;
+    background:var(--antracita); color:#f5f5f5;
+    border:1px solid var(--linea); border-radius:8px;
+    padding:6px 9px; cursor:pointer; text-align:left;
+    transition:background .2s, border-color .2s, transform .12s ease;
+  }
+  .legend-item:hover{ transform:translateY(-1px); }
+  .legend-item:active{ transform:translateY(0) scale(.98); }
+  .legend-item.active{ background:var(--rojo); border-color:var(--rojo); color:#fff; }
+  .legend-item .num{ font-size:14px; }
+
+  .filterbar{
+    display:flex; align-items:center; justify-content:space-between; gap:10px;
+    font-family:'Raleway',sans-serif; font-size:12px; color:var(--gris);
+    margin-top:12px; min-height:18px;
+  }
+  .filterbar button{
+    font-family:'Raleway',sans-serif; font-size:12px; font-weight:600;
+    color:var(--rojo-claro); background:none; border:none; cursor:pointer;
+    text-decoration:underline; display:none; white-space:nowrap;
+  }
+  .filterbar button.show{ display:inline; }
+
+  .empty-msg{
+    text-align:center; font-family:'Raleway',sans-serif; font-size:13px;
+    color:var(--gris); padding:20px 0; display:none;
+  }
+  .empty-msg.show{ display:block; }
+  .aviso-carga{ text-align:center; color:var(--gris); font-size:15px; line-height:1.7; padding:50px 10px; }
+
+  /* ---------- FOOTER ---------- */
+  footer{ max-width:640px; margin:0 auto; padding:8px 18px 40px; text-align:center; }
+  footer .rule2{ width:60px; height:1px; background:var(--linea); margin:0 auto 22px; }
+  footer .addr{
+    font-family:'Raleway',sans-serif; font-style:italic; font-weight:500;
+    font-size:16px; color:#f5f5f5;
+  }
+  footer .tel{
+    font-family:'Raleway',sans-serif; font-weight:700;
+    font-size:15px; color:var(--rojo-claro); margin-top:6px;
+  }
+  footer .note{
+    font-family:'Raleway',sans-serif; font-size:11.5px;
+    color:var(--gris); margin-top:10px; line-height:1.6;
+  }
+
+  @keyframes riseIn{ from{ opacity:0; transform:translateY(14px); } to{ opacity:1; transform:translateY(0); } }
+  .hero .eyebrow{ animation:riseIn .7s cubic-bezier(.22,.61,.36,1) both; animation-delay:.05s; }
+  .hero h1{ animation:riseIn .7s cubic-bezier(.22,.61,.36,1) both; animation-delay:.16s; }
+  .hero .sub{ animation:riseIn .7s cubic-bezier(.22,.61,.36,1) both; animation-delay:.28s; }
+  .section.in .dish{ transform:none; }
+
+  /* ---------- FOTOS Y VÍDEOS DE LOS PLATOS ---------- */
+  .dish.con-foto{ display:flex; gap:12px; align-items:flex-start; }
+  .dish .cuerpo-plato{ flex:1; min-width:0; }
+  .miniatura{
+    position:relative; flex:0 0 auto; width:64px; height:64px; padding:0;
+    border-radius:10px; overflow:hidden; border:1px solid var(--linea);
+    background:var(--musgo); cursor:zoom-in;
+    transition:transform .15s ease, border-color .15s;
+  }
+  .miniatura:hover{ border-color:var(--rojo); }
+  .miniatura:active{ transform:scale(.94); }
+  .miniatura img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .miniatura .mas{
+    position:absolute; right:3px; bottom:3px; font-size:10px; font-weight:700;
+    color:#fff; background:rgba(0,0,0,.65); border-radius:5px; padding:1px 5px;
+  }
+  .btn-video{
+    display:inline-flex; align-items:center; gap:5px; margin-top:7px;
+    font-family:'Raleway',sans-serif; font-size:11.5px; font-weight:600; letter-spacing:.04em;
+    color:#fff; background:transparent; border:1px solid var(--rojo); border-radius:999px;
+    padding:4px 11px 4px 9px; cursor:pointer; transition:background .15s;
+  }
+  .btn-video:hover{ background:var(--rojo); }
+  .btn-video .tri{ font-size:9px; color:var(--rojo-claro); }
+  .btn-video:hover .tri{ color:#fff; }
+  .logo{ width:100%; height:100%; object-fit:contain; display:block; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <a class="back" href="index.html">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg>
+    Inicio
+  </a>
+  <div class="eyebrow">Vinos, tapas y arroces · A Coruña</div>
+  <h1><span style="font-family:'Raleway',sans-serif;font-weight:300;letter-spacing:.22em;text-transform:uppercase;color:#ffffff">COMAREA </span><span style="font-family:'Dancing Script',cursive;font-weight:600;color:#cc1a1a;letter-spacing:.02em">Arrocería</span></h1>
+  <div class="sub">Enrique Mariñas Romero, 1</div>
+  <div class="press" aria-hidden="true"><img class="logo" src="logo.svg" alt="Comarea Arrocería"></div>
+</div>
+
+<div class="navwrap">
+  <div class="navscroll" id="nav"></div>
+  <div class="searchbar">
+    <input id="search" type="text" placeholder="Buscar un plato…" autocomplete="off">
+  </div>
+</div>
+
+<main id="main"><div class="aviso-carga">Cargando la carta…</div></main>
+
+<footer>
+  <div class="rule2"></div>
+  <div class="addr">Enrique Mariñas Romero, 1 · A Coruña</div>
+  <div class="tel">881 898 534</div>
+  <div class="note">Martes a sábado · 13:00–15:30 y 20:30–23:00 (vie. y sáb. hasta 23:30)<br>Consulta alérgenos al personal de sala.</div>
+</footer>
+
+<script src="media.js"></script>
+<script>
+/* =========================================================
+   Los platos vienen de datos/carta.json, que se edita desde
+   admin.html. Aquí no hay que tocar nada nunca más.
+   Cada plato: n = nombre · s = descripción · p = precio
+               a = lista de alérgenos (números del 1 al 14)
+               f = fotos (hasta 5) · v = vídeos [{src,poster} o {url}]
+   ========================================================= */
+const RUTA = 'datos/carta.json';
+
+const ALLERGENS = {
+  1:"Gluten", 2:"Crustáceos", 3:"Huevo", 4:"Pescado", 5:"Cacahuetes",
+  6:"Soja", 7:"Lácteos", 8:"Frutos de cáscara", 9:"Apio", 10:"Mostaza",
+  11:"Granos de sésamo", 12:"Dióxido de azufre y sulfitos", 13:"Moluscos", 14:"Altramuces"
+};
+const ICONS = {
+  1:"🌾", 2:"🦐", 3:"🥚", 4:"🐟", 5:"🥜",
+  6:"🫘", 7:"🥛", 8:"🌰", 9:"🥬", 10:"🌼",
+  11:"⚫", 12:"🍷", 13:"🐚", 14:"🫛"
+};
+
+let MENU = [];
+const nav = document.getElementById('nav');
+const mainEl = document.getElementById('main');
+const activeAllergens = new Set();
+const searchInput = document.getElementById('search');
+let emptyMsg = null;
+
+/* ---------- Construcción de la carta ---------- */
+function construir(){
+  nav.innerHTML = '';
+  mainEl.innerHTML = '';
+
+  MENU.forEach(sec=>{
+    const pill = document.createElement('button');
+    pill.className = 'pill';
+    pill.textContent = sec.title;
+    pill.onclick = ()=>document.getElementById('sec-'+sec.id).scrollIntoView({behavior:'smooth', block:'start'});
+    nav.appendChild(pill);
+
+    const section = document.createElement('section');
+    section.className = 'section';
+    section.id = 'sec-'+sec.id;
+
+    const h2 = document.createElement('h2'); h2.textContent = sec.title;
+    const rule = document.createElement('div'); rule.className = 'rule';
+    section.appendChild(h2); section.appendChild(rule);
+
+    (sec.items||[]).forEach((it, i)=>{
+      const row = document.createElement('div');
+      row.className = 'dish';
+      row.style.transitionDelay = '0s, 0s, ' + (i * 0.045) + 's';
+      row.dataset.name = String(it.n||'').toLowerCase();
+      const alg = Array.isArray(it.a) ? it.a : [];
+      row.dataset.allergens = alg.join(',');
+
+      const fotos  = Array.isArray(it.f) ? it.f.filter(Boolean) : [];
+      const videos = Array.isArray(it.v) ? it.v.filter(v => v && (v.src || v.url)) : [];
+      let caja = row;
+      if(fotos.length){
+        row.classList.add('con-foto');
+        const mini = document.createElement('button');
+        mini.className = 'miniatura';
+        mini.setAttribute('aria-label', 'Ver fotos de ' + (it.n||''));
+        mini.innerHTML = '<img src="'+LAGAR.esc(fotos[0])+'" alt="" loading="lazy">'
+                       + (fotos.length > 1 ? '<span class="mas">+'+(fotos.length-1)+'</span>' : '');
+        mini.onclick = ()=>LAGAR.galeria(fotos, 0, (it.n||'') + (it.p ? ' · '+it.p : ''));
+        row.appendChild(mini);
+        caja = document.createElement('div'); caja.className = 'cuerpo-plato';
+        row.appendChild(caja);
+      }
+
+      const top = document.createElement('div'); top.className = 'dish-top';
+      const name = document.createElement('div'); name.className = 'dish-name';
+      name.textContent = it.n || '';
+      if(alg.length){
+        const chips = document.createElement('span'); chips.className='chips';
+        alg.forEach(num=>{
+          const c = document.createElement('button');
+          c.className='chip'; c.textContent=ICONS[num]||'?'; c.title=ALLERGENS[num]||'';
+          c.onclick = ()=>toggleAllergen(num);
+          c.dataset.num = num;
+          chips.appendChild(c);
+        });
+        name.appendChild(chips);
+      }
+      const price = document.createElement('div'); price.className='dish-price'; price.textContent = it.p || '';
+      top.appendChild(name); top.appendChild(price);
+      caja.appendChild(top);
+      if(it.s){
+        const sub = document.createElement('div'); sub.className='dish-sub'; sub.textContent = it.s;
+        caja.appendChild(sub);
+      }
+      if(videos.length){
+        const bv = document.createElement('button');
+        bv.className = 'btn-video';
+        bv.innerHTML = '<span class="tri">▶</span>' + (videos.length > 1 ? 'Ver vídeos ('+videos.length+')' : 'Ver vídeo');
+        bv.onclick = ()=>LAGAR.verVideos(videos.map(v => ({ ...v, t: it.n, s: it.p })), 0);
+        caja.appendChild(bv);
+      }
+      section.appendChild(row);
+    });
+    mainEl.appendChild(section);
+  });
+
+  /* Leyenda de alérgenos */
+  const legend = document.createElement('details');
+  legend.className = 'legend';
+  legend.innerHTML = '<summary>Alérgenos · toca uno para filtrar</summary>'
+    + '<div class="legend-grid" id="legend-grid"></div>'
+    + '<div class="filterbar"><span id="filter-status"></span>'
+    + '<button id="clear-filters">Quitar filtros</button></div>';
+  mainEl.appendChild(legend);
+
+  const grid = legend.querySelector('#legend-grid');
+  Object.entries(ALLERGENS).forEach(([num,name])=>{
+    const b = document.createElement('button');
+    b.className = 'legend-item'; b.dataset.num = num;
+    b.innerHTML = '<span class="num">'+ICONS[num]+'</span><span>'+name+'</span>';
+    b.onclick = ()=>toggleAllergen(num);
+    grid.appendChild(b);
+  });
+
+  emptyMsg = document.createElement('div');
+  emptyMsg.className='empty-msg';
+  emptyMsg.textContent='Ningún plato coincide con tu búsqueda.';
+  mainEl.appendChild(emptyMsg);
+
+  document.getElementById('clear-filters').onclick = ()=>{
+    activeAllergens.clear();
+    refreshChips();
+    applyFilters();
+  };
+
+  /* Aparición al hacer scroll */
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.12});
+  document.querySelectorAll('.section').forEach(s=>io.observe(s));
+
+  /* Pestaña activa según el scroll */
+  const pills = Array.from(nav.children);
+  const sections = MENU.map(s=>document.getElementById('sec-'+s.id));
+  const spy = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const idx = sections.indexOf(e.target);
+        pills.forEach(p=>p.classList.remove('active'));
+        if(pills[idx]) pills[idx].classList.add('active');
+      }
+    });
+  }, {rootMargin:'-45% 0px -50% 0px', threshold:0});
+  sections.forEach(s=>{ if(s) spy.observe(s); });
+
+  refreshChips();
+  applyFilters();
+}
+
+/* ---------- Filtros ---------- */
+function toggleAllergen(num){
+  num = String(num);
+  if(activeAllergens.has(num)) activeAllergens.delete(num); else activeAllergens.add(num);
+  refreshChips();
+  applyFilters();
+}
+function refreshChips(){
+  document.querySelectorAll('.chip, .legend-item').forEach(el=>{
+    el.classList.toggle('active', activeAllergens.has(el.dataset.num));
+  });
+  const status = document.getElementById('filter-status');
+  const btn = document.getElementById('clear-filters');
+  if(!status || !btn) return;
+  if(activeAllergens.size){
+    status.textContent = 'Atenuando platos con: ' + [...activeAllergens].map(n=>ALLERGENS[n]).join(', ');
+    btn.classList.add('show');
+  } else {
+    status.textContent = '';
+    btn.classList.remove('show');
+  }
+}
+function applyFilters(){
+  const q = searchInput.value.trim().toLowerCase();
+  let anyVisible = false;
+  document.querySelectorAll('.dish').forEach(row=>{
+    const matches = !q || row.dataset.name.includes(q);
+    row.classList.toggle('hide', !matches);
+    if(matches){
+      anyVisible = true;
+      const rowAllergens = row.dataset.allergens.split(',').filter(Boolean);
+      const dim = activeAllergens.size && rowAllergens.some(a=>activeAllergens.has(a));
+      row.classList.toggle('dim', dim);
+    }
+  });
+  document.querySelectorAll('.section').forEach(sec=>{
+    const visibleRows = sec.querySelectorAll('.dish:not(.hide)').length;
+    sec.style.display = (q && visibleRows===0) ? 'none' : '';
+  });
+  if(emptyMsg) emptyMsg.classList.toggle('show', !!q && !anyVisible);
+}
+searchInput.addEventListener('input', applyFilters);
+
+/* ---------- Carga ---------- */
+async function cargar(){
+  try{
+    const res = await fetch(RUTA + '?v=' + Date.now(), { cache:'no-store' });
+    if(!res.ok) throw new Error(res.status);
+    MENU = await res.json();
+    if(!Array.isArray(MENU) || !MENU.length) throw new Error('vacio');
+    construir();
+  }catch(e){
+    mainEl.innerHTML = '<div class="aviso-carga">No se pudo cargar la carta.<br>'
+                     + 'Prueba a recargar la página o pregunta en el local.</div>';
+  }
+}
+cargar();
+</script>
+</body>
+</html>
